@@ -27,11 +27,17 @@ const handleMessage = (bytes, uuid) => {
 
     broadcast()
 
-    console.log(message)
+    console.log(`${user.username} updated their state: ${JSON.stringify(user.state)}`)
 
 }
 
 const handleClose = uuid => {
+
+    console.log(`${users[uuid].username} disconnected.`)
+    delete connections[uuid] 
+    delete users[uuid]
+
+    broadcast()
 
 }
 
